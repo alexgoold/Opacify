@@ -1,3 +1,3 @@
 # Opacify
 
-[Download Zip](https://github.com/alexgoold/Opacify/blob/master/Opacify.zip "download")
+[Download Zip](https://github.com/alexgoold/Opacify/raw/master/Opacify.zip "download")
