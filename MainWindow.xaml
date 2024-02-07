@@ -5,7 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:Opacify"
             mc:Ignorable="d"
-            Title="Opacify" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800">
+            Title="Opacify" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Background="#FF2B2B2B">
 
     <Grid Background="#FF232323">
 
@@ -20,21 +20,21 @@
             <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.ColumnSpan="4"></TextBox>
+        <TextBlock Margin="20,21,-4,0" TextAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="4" Foreground="White" Background="{x:Null}">Have you ever wanted to duplicate an image but with each new imagea slightly lower opacity? Follow the steps below to do exactly that</TextBlock>
         <Label Content="Choose an Image" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" Width="116" Grid.ColumnSpan="2" Margin="42,0,0,0" Foreground="White" />
-        <Image x:Name="ImageDisplay" HorizontalAlignment="Left" Height="183"  VerticalAlignment="Top" Width="156" Margin="20,94,0,0" Source="{Binding ChosenImage}" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Image x:Name="ImageDisplay" HorizontalAlignment="Left" Height="183"  VerticalAlignment="Top" Width="156" Margin="20,115,0,0" Source="{Binding ChosenImage}" Grid.RowSpan="3"/>
         <Button x:Name="ChooseImagebutton" Style="{DynamicResource RoundButton}" Content="Browse" HorizontalAlignment="Left" Margin="50,38,0,0" VerticalAlignment="Top" Click="ImageButton_OnClick" Height="35" Grid.Row="2" Width="100" Background="#FF545454" Grid.ColumnSpan="2" Foreground="White" />
 
-        <Label Content="Choose a folder" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="116" Grid.Column="2" Foreground="White"/>
-        <TextBlock x:Name="FolderPathLabel" Text="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="75" Width="180" Grid.Column="2" Margin="0,37,0,0" Padding="1, 1" Grid.Row="1" FontSize="16" Background="#FF232323" Foreground="White" TextWrapping="Wrap"/>
-        <Button x:Name="ChooseFolderbutton" Style="{DynamicResource RoundButton}" Content="Browse" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Click="FolderButton_OnClick" Height="35" Grid.Row="2" Width="100" Grid.Column="2" Background="#FF545454" Foreground="White" />
+        <Label Content="Choose a folder" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="116" Grid.Column="1" Foreground="White"/>
+        <TextBlock x:Name="FolderPathLabel" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" Height="75" Width="180" Grid.Column="1" Padding="1, 1" Grid.Row="1" FontSize="16" Background="#FF232323" Foreground="White" TextWrapping="Wrap"/>
+        <Button x:Name="ChooseFolderbutton" Style="{DynamicResource RoundButton}" Content="Browse" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Click="FolderButton_OnClick" Height="35" Grid.Row="2" Width="100" Grid.Column="1" Background="#FF545454" Foreground="White" />
 
-        <Label Content="Choose amount" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="116" Grid.Column="3" Foreground="White"/>
-        <Label x:Name="Amountlabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="116" Grid.Column="3" Margin="0,37,0,0" Grid.Row="1" Foreground="White"/>
-        <Slider x:Name="AmountSlider"  Grid.Column="3" HorizontalAlignment="Center" Margin="0,47,0,0" Grid.Row="2" VerticalAlignment="Top"  Width="142" TickPlacement="TopLeft" Maximum="365" TickFrequency="20" ValueChanged="AmountSlider_OnValueChanged"/>
+        <Label Content="Choose amount" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="116" Grid.Column="2" Foreground="White"/>
+        <Label x:Name="Amountlabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="116" Grid.Column="2" Grid.Row="1" Foreground="White" Margin="0,37,0,0"/>
+        <Slider x:Name="AmountSlider"  Grid.Column="2" HorizontalAlignment="Center" Margin="0,49,0,0" Grid.Row="2" VerticalAlignment="Top"  Width="142" TickPlacement="TopLeft" Maximum="365" TickFrequency="20" ValueChanged="AmountSlider_OnValueChanged"/>
         <Button x:Name="Opacify" Style="{DynamicResource RoundButton}" Content="OPACIFY!" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" Click="OpacifyButton_OnClick" Height="35" Grid.Row="2" Width="100" Grid.Column="4" Background="#FF545454" Foreground="White" />
-        <ProgressBar x:Name="ProgressBar" Grid.Column="4" Margin="19,57,18,47" Grid.Row="1" Background="Gainsboro"/>
-        <Label Content="Create Images" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="116" Grid.Column="4" Foreground="White"/>
+        <ProgressBar x:Name="ProgressBar" Grid.Column="3" Margin="18,47,18,56" Grid.Row="1" Background="Gainsboro"/>
+        <Label Content="Create Images" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="116" Grid.Column="3" Foreground="White"/>
 
     </Grid>
 

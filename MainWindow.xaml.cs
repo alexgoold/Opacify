@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,8 @@ namespace Opacify
         private void ImageButton_OnClick(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
+            dialog.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp|All files (*.*)|*.*";
+
             if (dialog.ShowDialog() == true)
             {
                 try
@@ -71,7 +74,7 @@ namespace Opacify
         }
 
 
-        private void OpacifyButton_OnClick(object sender, RoutedEventArgs e)
+        private async void OpacifyButton_OnClick(object sender, RoutedEventArgs e)
         {
             if (ChosenFolder == null)
             {
@@ -104,7 +107,8 @@ namespace Opacify
                     context.DrawImage(baseImage, new Rect(0, 0, baseImage.Width, baseImage.Height));
                 }
 
-                var bitmap = new RenderTargetBitmap(baseImage.PixelWidth, baseImage.PixelHeight, baseImage.DpiX, baseImage.DpiY, PixelFormats.Pbgra32);
+                var bitmap = new RenderTargetBitmap(baseImage.PixelWidth, baseImage.PixelHeight, baseImage.DpiX,
+                    baseImage.DpiY, PixelFormats.Pbgra32);
                 bitmap.Render(visual);
 
                 var encoder = new PngBitmapEncoder();
@@ -112,7 +116,7 @@ namespace Opacify
 
                 string outputPath = Path.Combine(ChosenFolder, $"opacified{i}.png");
 
-               try
+                try
                 {
                     using (var stream = File.Create(outputPath))
                     {
@@ -122,12 +126,29 @@ namespace Opacify
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred while saving the image '{outputPath}': {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"An error occurred while saving the image '{outputPath}': {ex.Message}",
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-                ProgressBar.Value = (i + 1) / (double)Amount * 100;
+                double progress = (i + 1) / (double)Amount * 100;
+                UpdateProgressBar(progress);
             }
+
+            MessageBox.Show("Images have been created successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            ChosenImage = null;
+            ChosenFolder = null;
+            ImagePath = null;
+            Amount = 0;
+            AmountSlider.Value = 0;
+            FolderPathLabel.Text = "No folder selected";
+            ImageDisplay.Source = null;
+            UpdateProgressBar(0);
+        }
+
+        private void UpdateProgressBar(double value)
+        {
+            Dispatcher.Invoke(() => { ProgressBar.Value = value; });
         }
     }
 }
-    
